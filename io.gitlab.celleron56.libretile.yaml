@@ -92,5 +92,5 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/celleron56/libretile.git
-        commit: 9bab90655ddfa6c1bbf9f2be56015cfd654a9e66
+        commit: 0b8a5723ea18e354fde3e265693e31f1f8cccd38
    
