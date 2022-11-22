@@ -4,13 +4,13 @@ runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 command: start.sh
 finish-args:
-  - "--socket=x11"
-  - "--share=ipc"
-  - "--socket=pulseaudio"
-  - "--device=all"
-  - "--share=network"
-  - "--persist=.libretile"
- 
+  - --socket=x11
+  - --share=ipc
+  - --socket=pulseaudio
+  - --device=all
+  - --share=network
+  - --persist=.libretile
+
 
 
 modules:
@@ -35,8 +35,8 @@ modules:
           - /man
         sources:
           - type: archive
-            url: https://prdownloads.sourceforge.net/tcl/tcl8.6.12-src.tar.gz
-            sha256: 26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6
+            url: https://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
+            sha256: 43a1fae7412f61ff11de2cfd05d28cfc3a73762f354a417c62370a54e2caf066
             x-checker-data:
               type: anitya
               project-id: 4941
@@ -53,8 +53,8 @@ modules:
           - /man
         sources:
           - type: archive
-            url: https://prdownloads.sourceforge.net/tcl/tk8.6.12-src.tar.gz
-            sha256: 12395c1f3fcb6bed2938689f797ea3cdf41ed5cb6c4766eec8ac949560310630
+            url: https://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
+            sha256: 2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675
             x-checker-data:
               type: anitya
               project-id: 11426
@@ -64,33 +64,33 @@ modules:
       - name: python3-pillow
         buildsystem: simple
         build-commands:
-         - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-           --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
+          - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+            --prefix=${FLATPAK_DEST} "Pillow" --no-build-isolation
         sources:
-        - type: file
-          url: https://files.pythonhosted.org/packages/8c/92/2975b464d9926dc667020ed1abfa6276e68c3571dcb77e43347e15ee9eed/Pillow-9.2.0.tar.gz
-          sha256: 75e636fd3e0fb872693f23ccb8a5ff2cd578801251f3a4f6854c6a5d437d3c04
+          - type: file
+            url: https://files.pythonhosted.org/packages/8c/92/2975b464d9926dc667020ed1abfa6276e68c3571dcb77e43347e15ee9eed/Pillow-9.2.0.tar.gz
+            sha256: 75e636fd3e0fb872693f23ccb8a5ff2cd578801251f3a4f6854c6a5d437d3c04
 
   - name: libretile
     buildsystem: simple
-    
+
     build-commands:
-       - mkdir -p /app/bin
-       - mkdir -p /app/share/code
-       - rm  manual.odp
-       - mv * /app/share/code
-       - echo "python3 /app/share/code/main.py" >> /app/bin/start.sh 
-       - chmod 777 /app/bin/start.sh
-       - mkdir -p /app/share/metainfo
-       - mkdir -p /app/share/icons/hicolor/64x64/apps
-       - mkdir -p /app/share/icons/hicolor/128x128/apps
-       - mkdir -p /app/share/applications/
-       - mv /app/share/code/util/io.gitlab.celleron56.libretile.metainfo.xml /app/share/metainfo/io.gitlab.celleron56.libretile.metainfo.xml
-       - mv /app/share/code/util/libretile.png /app/share/icons/hicolor/64x64/apps/io.gitlab.celleron56.libretile.png
-       - mv /app/share/code/util/libretile128.png /app/share/icons/hicolor/128x128/apps/io.gitlab.celleron56.libretile.png
-       - mv /app/share/code/util/io.gitlab.celleron56.libretile.desktop  /app/share/applications/io.gitlab.celleron56.libretile.desktop
+      - mkdir -p /app/bin
+      - mkdir -p /app/share/code
+      - rm  manual.odp
+      - mv * /app/share/code
+      - echo "python3 /app/share/code/main.py" >> /app/bin/start.sh
+      - chmod 777 /app/bin/start.sh
+      - mkdir -p /app/share/metainfo
+      - mkdir -p /app/share/icons/hicolor/64x64/apps
+      - mkdir -p /app/share/icons/hicolor/128x128/apps
+      - mkdir -p /app/share/applications/
+      - mv /app/share/code/util/io.gitlab.celleron56.libretile.metainfo.xml /app/share/metainfo/io.gitlab.celleron56.libretile.metainfo.xml
+      - mv /app/share/code/util/libretile.png /app/share/icons/hicolor/64x64/apps/io.gitlab.celleron56.libretile.png
+      - mv /app/share/code/util/libretile128.png /app/share/icons/hicolor/128x128/apps/io.gitlab.celleron56.libretile.png
+      - mv /app/share/code/util/io.gitlab.celleron56.libretile.desktop  /app/share/applications/io.gitlab.celleron56.libretile.desktop
     sources:
       - type: git
         url: https://gitlab.com/celleron56/libretile.git
         commit: 716213e3cde8c23a1113f42ea6d62c28b20d8848
-   
+
